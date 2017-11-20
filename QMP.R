@@ -16,13 +16,12 @@ rarefy_even_sampling_depth <- function(cnv_corrected_abundance_table, cell_count
   minimum_sampling_depth = min(sampling_depths) # minimum of all sampling depths
   rarefy_to = cell_counts_table * minimum_sampling_depth # nr of reads to rarefy in each sample in order to get to an even sampling depth over all samples
   cnv_corrected_abundance_table_phyloseq = otu_table(cnv_corrected_abundance_table, taxa_are_rows = FALSE) # convert to phyloseq otutable
-  out=matrix(nrow = nrow(cnv_corrected_abundance_table_phyloseq), ncol = ncol(cnv_corrected_abundance_table_phyloseq), dimnames = list(rownames(cnv_corrected_abundance_table_phyloseq), colnames(cnv_corrected_abundance_table_phyloseq)))
+  rarefied_matrix=matrix(nrow = nrow(cnv_corrected_abundance_table_phyloseq), ncol = ncol(cnv_corrected_abundance_table_phyloseq), dimnames = list(rownames(cnv_corrected_abundance_table_phyloseq), colnames(cnv_corrected_abundance_table_phyloseq)))
   for (i in 1:nrow(cnv_corrected_abundance_table_phyloseq))
   {
     x <- rarefy_even_depth(cnv_corrected_abundance_table_phyloseq[i,], sample.size = rarefy_to[i], rngseed = 711, replace = FALSE, trimOTUs = F, verbose = FALSE)
-    out[i,] = x
+    rarefied_matrix[i,] = x
   }
-  rarefied_matrix = as.matrix(out)
   normalised_rarefied_matrix = rarefied_matrix/rowSums(rarefied_matrix)
   QMP = normalised_rarefied_matrix*cell_counts_table[1,]
   return(QMP)
