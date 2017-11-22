@@ -2,10 +2,9 @@
 # author: Doris Vandeputte           #
 ######################################
 # this script doesn't include copy number correction, a function for copy number correction is included in RDP classifier 2.12 
-# this script uses function rarefy_even_depth from phyloseq 1.20.0
+# this script uses function rarefy_even_depth from phyloseq 1.20.0, it needs package phyloseq to be installed and loaded in order to work.
 # with cnv_corrected_abundance_table: a copy number variation corrected abundance table with sample-identifiers as rows, copy number corrected taxa-abundances as columns
 # with cell_counts_table: a table with sample-identifiers as rows, cell counts as columns 
-# makes use of phyloseq function rarefy_even_depth
 library(phyloseq)
 rarefy_even_sampling_depth <- function(cnv_corrected_abundance_table, cell_counts_table) 
 {
