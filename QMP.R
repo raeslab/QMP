@@ -10,7 +10,7 @@ rarefy_even_sampling_depth <- function(cnv_corrected_abundance_table, cell_count
 {
   try(if(all(row.names(cnv_corrected_abundance_table) == row.names(cell_counts_table))==FALSE) stop("Cnv_corrected_abundance_table and cell_counts_table do not have the same sample-names, Please check!"))
   cnv_corrected_abundance_table = ceiling(cnv_corrected_abundance_table) # data values are rounded up in order to make use of integer values during the calculations
-  cell_counts_table = t(cell_counts_table[order(row.names(cnv_corrected_abundance_table)),]) # make sure the order of the samples is the same in both files  
+  cell_counts_table = t(cell_counts_table[row.names(cnv_corrected_abundance_table),]) # make sure the order of the samples is the same in both files    
   sample_sizes = rowSums(cnv_corrected_abundance_table) # sample size of each sample (total nr of reads)
   sampling_depths = sample_sizes / cell_counts_table # sampling depth of each sample (total nr of reads divided by the cell count)
   minimum_sampling_depth = min(sampling_depths) # minimum of all sampling depths
