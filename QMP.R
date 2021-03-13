@@ -1,6 +1,6 @@
 # rarefaction to even sampling depth #
 # authors: concept: Gwen Falony #
-# authors: contributors: Doris Vandeputte, Gunter Kathagen, Kevin d'Hoe, Joao Sabino, Mireia Valles-Colomer #
+# authors: contributors: Doris Vandeputte, Gunter Kathagen, Kevin d'Hoe, Joao Sabino, Mireia Valles-Colomer, Sara Vieira-Silva #
 ######################################
 # this script doesn't include copy number correction, a function for copy number correction is included in RDP classifier 2.12 
 # this script uses function rarefy_even_depth from phyloseq 1.20.0, it needs package phyloseq to be installed and loaded in order to work.
